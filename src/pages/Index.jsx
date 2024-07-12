@@ -11,7 +11,7 @@ const Index = () => {
   const onSubmit = data => {
     console.log(data);
     // Handle search logic here
-    navigate("/login");
+    navigate("/home");
   };
 
   return (
