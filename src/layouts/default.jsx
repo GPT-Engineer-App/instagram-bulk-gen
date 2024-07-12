@@ -8,6 +8,7 @@ const Layout = () => {
         <Link to="/" className="text-2xl font-bold">SharE CarTriP</Link>
         <nav className="space-x-4">
           <Link to="/home" className="hover:underline">Home</Link>
+          <Link to="/ride-updates" className="hover:underline">Ride Updates</Link>
           <Link to="/login" className="hover:underline">Login</Link>
         </nav>
       </header>
