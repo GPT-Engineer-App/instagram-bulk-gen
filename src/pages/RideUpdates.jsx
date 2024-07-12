@@ -3,12 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
+import Chat from "@/components/Chat";
+import Call from "@/components/Call";
+import LiveMonitoring from "@/components/LiveMonitoring";
+import CancellationReasonModal from "@/components/CancellationReasonModal";
 
 const RideUpdates = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [rides, setRides] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [currentRide, setCurrentRide] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [isCancellationModalOpen, setIsCancellationModalOpen] = useState(false);
 
   const onSubmit = data => {
     if (isEditing) {
@@ -26,7 +32,19 @@ const RideUpdates = () => {
   };
 
   const handleDelete = id => {
-    setRides(rides.filter(ride => ride.id !== id));
+    setIsCancellationModalOpen(true);
+    setCurrentRide(rides.find(ride => ride.id === id));
+  };
+
+  const handleSendMessage = (message) => {
+    setMessages([...messages, { sender: "You", text: message }]);
+  };
+
+  const handleCancellationSubmit = (reason) => {
+    setRides(rides.filter(ride => ride.id !== currentRide.id));
+    setIsCancellationModalOpen(false);
+    setCurrentRide(null);
+    console.log("Cancellation reason:", reason);
   };
 
   return (
@@ -70,11 +88,21 @@ const RideUpdates = () => {
                   <Button variant="outline" onClick={() => handleEdit(ride)}>Edit</Button>
                   <Button variant="destructive" onClick={() => handleDelete(ride.id)}>Delete</Button>
                 </div>
+                <div className="mt-4">
+                  <Chat messages={messages} onSendMessage={handleSendMessage} />
+                  <Call to="+1234567890" from="+0987654321" />
+                  <LiveMonitoring driverLocation={{ lat: 51.505, lng: -0.09 }} riderLocation={{ lat: 51.515, lng: -0.1 }} />
+                </div>
               </li>
             ))}
           </ul>
         )}
       </div>
+      <CancellationReasonModal
+        isOpen={isCancellationModalOpen}
+        onClose={() => setIsCancellationModalOpen(false)}
+        onSubmit={handleCancellationSubmit}
+      />
     </div>
   );
 };
