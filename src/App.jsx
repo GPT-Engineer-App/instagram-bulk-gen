@@ -9,6 +9,7 @@ import HomePage from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Profile from "./pages/Profile.jsx";
 import RideUpdates from "./pages/RideUpdates.jsx";
+import ProfileCreation from "./pages/ProfileCreation.jsx";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="login" element={<Login />} />
               <Route path="profile/:userId" element={<Profile />} />
               <Route path="ride-updates" element={<RideUpdates />} />
+              <Route path="profile-creation" element={<ProfileCreation />} />
               {/* Add more routes here as needed */}
             </Route>
           </Routes>
