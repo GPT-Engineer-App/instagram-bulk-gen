@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 const Profile = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data from mock API or local storage
@@ -35,6 +37,14 @@ const Profile = () => {
   if (!userData) {
     return <div>Loading...</div>;
   }
+
+  const handleSearchRide = () => {
+    navigate("/home");
+  };
+
+  const handlePostRide = () => {
+    navigate("/ride-updates");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -93,6 +103,10 @@ const Profile = () => {
         <div>
           <Label>UID</Label>
           <p>{userData.uid}</p>
+        </div>
+        <div className="mt-4 space-x-4">
+          <Button onClick={handleSearchRide}>Search Ride</Button>
+          <Button onClick={handlePostRide}>Post Ride</Button>
         </div>
       </div>
     </div>

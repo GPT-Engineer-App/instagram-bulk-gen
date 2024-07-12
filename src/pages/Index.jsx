@@ -6,8 +6,7 @@ const Index = () => {
       <h1 className="text-3xl">Welcome to SharE CarTriP</h1>
       <p>Start your journey with us.</p>
       <div className="mt-4 space-x-4">
-        <Link to="/home" className="text-blue-500">Home</Link>
-        <Link to="/login" className="text-blue-500">Login</Link>
+        <Link to="/home" className="text-blue-500">Search Ride</Link>
       </div>
     </div>
   );

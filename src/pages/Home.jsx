@@ -3,12 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
   const onSubmit = data => {
     console.log(data);
     // Handle search logic here
+    navigate("/login");
   };
 
   return (

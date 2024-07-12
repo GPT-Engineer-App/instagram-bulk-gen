@@ -4,13 +4,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isDriver, setIsDriver] = useState(true);
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
   const onSubmit = data => {
     console.log(data);
     // Handle login/signup logic here
+    navigate("/profile/1"); // Assuming user ID is 1 for now
   };
 
   return (
