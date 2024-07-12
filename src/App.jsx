@@ -19,7 +19,7 @@ const queryClient = new QueryClient();
 export const navItems = [
   {
     title: "Home",
-    to: "/",
+    to: "/home",
     icon: <HomeIcon className="h-4 w-4" />,
   },
   {
