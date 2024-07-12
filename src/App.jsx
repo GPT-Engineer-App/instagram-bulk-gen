@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home as HomeIcon, Car as CarIcon, User as UserIcon, CreditCard as CreditCardIcon, Info as InfoIcon, Shield as ShieldIcon } from "lucide-react";
+import { Home as HomeIcon, Car as CarIcon, User as UserIcon, CreditCard as CreditCardIcon, Info as InfoIcon, Shield as ShieldIcon, LogIn as LogInIcon, UserPlus as UserPlusIcon } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar"; // Change to sidebar layout
 import Index from "./pages/Index.jsx";
@@ -24,7 +24,7 @@ export const navItems = [
   },
   {
     title: "Profile",
-    to: "/profile",
+    to: "/profile/1", // Assuming user ID is 1 for now
     icon: <UserIcon className="h-4 w-4" />,
   },
   {
@@ -46,6 +46,16 @@ export const navItems = [
     title: "Ride Updates",
     to: "/ride-updates",
     icon: <CarIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Login",
+    to: "/login",
+    icon: <LogInIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Profile Creation",
+    to: "/profile-creation",
+    icon: <UserPlusIcon className="h-4 w-4" />,
   },
 ];
 
