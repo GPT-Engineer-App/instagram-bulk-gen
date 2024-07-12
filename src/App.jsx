@@ -1,23 +1,46 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home as HomeIcon, Car as CarIcon } from "lucide-react";
+import { Home as HomeIcon, Car as CarIcon, User as UserIcon, CreditCard as CreditCardIcon, Info as InfoIcon, Shield as ShieldIcon } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Layout from "./layouts/default"; // available: default, navbar, sidebar
+import Layout from "./layouts/sidebar"; // Change to sidebar layout
 import Index from "./pages/Index.jsx";
 import HomePage from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Profile from "./pages/Profile.jsx";
 import RideUpdates from "./pages/RideUpdates.jsx";
 import ProfileCreation from "./pages/ProfileCreation.jsx";
+import Payment from "./pages/Payment.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
+import Insurance from "./pages/Insurance.jsx";
 
 const queryClient = new QueryClient();
 
 export const navItems = [
   {
-    title: "Home", // Feel free to change this to your liking
+    title: "Home",
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Profile",
+    to: "/profile",
+    icon: <UserIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Payment",
+    to: "/payment",
+    icon: <CreditCardIcon className="h-4 w-4" />,
+  },
+  {
+    title: "About Us",
+    to: "/about-us",
+    icon: <InfoIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Insurance",
+    to: "/insurance",
+    icon: <ShieldIcon className="h-4 w-4" />,
   },
   {
     title: "Ride Updates",
@@ -40,6 +63,9 @@ const App = () => {
               <Route path="profile/:userId" element={<Profile />} />
               <Route path="ride-updates" element={<RideUpdates />} />
               <Route path="profile-creation" element={<ProfileCreation />} />
+              <Route path="payment" element={<Payment />} />
+              <Route path="about-us" element={<AboutUs />} />
+              <Route path="insurance" element={<Insurance />} />
               {/* Add more routes here as needed */}
             </Route>
           </Routes>
